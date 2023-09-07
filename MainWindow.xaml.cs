@@ -23,6 +23,7 @@ namespace CSharpWpf_SQLite
         public MainWindow()
         {
             InitializeComponent();
+            DataAccess.InitializeDatabase();
         }
     }
 }
