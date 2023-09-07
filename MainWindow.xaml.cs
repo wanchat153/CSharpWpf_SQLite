@@ -24,6 +24,7 @@ namespace CSharpWpf_SQLite
         {
             InitializeComponent();
             DataAccess.InitializeDatabase();
+            DataAccess.AddData("Wanchat");
         }
     }
 }
