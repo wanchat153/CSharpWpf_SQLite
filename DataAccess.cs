@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Documents;
+using System.Windows.Markup;
 
 namespace CSharpWpf_SQLite
 {
@@ -39,6 +42,27 @@ namespace CSharpWpf_SQLite
                 insertCommand.ExecuteReader();
                 db.Close();
             }
+        }
+
+        //SELECT MyTable Show data list
+        public static List<String> GetData()
+        {
+            List<String> entries = new List<string>();
+            using (SqliteConnection db = new SqliteConnection($"Filename=sqliteSample.db"))
+            {
+                db.Open();
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT Text_Entry from MyTable", db);
+                SqliteDataReader query = selectCommand.ExecuteReader();
+                while (query.Read())
+                {
+                    string textEntry = query.GetString(0);
+                    entries.Add(query.GetString(0)); // Add the data to the list
+                    MessageBox.Show(textEntry);
+                }
+                db.Close();
+            }
+            return entries;
         }
     }
 }

@@ -26,5 +26,10 @@ namespace CSharpWpf_SQLite
             DataAccess.InitializeDatabase();
             DataAccess.AddData("Wanchat");
         }
+
+        private void showBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DataAccess.GetData();
+        }
     }
 }
